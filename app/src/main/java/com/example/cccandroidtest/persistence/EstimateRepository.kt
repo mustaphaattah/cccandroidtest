@@ -1,6 +1,8 @@
 package com.example.cccandroidtest.persistence
 
 import com.example.cccandroidtest.models.Estimate
+import com.example.cccandroidtest.models.Person
+import kotlinx.coroutines.flow.Flow
 
 class EstimateRepository (private val estimateDao: EstimateDao) {
 
@@ -16,7 +18,11 @@ class EstimateRepository (private val estimateDao: EstimateDao) {
         estimateDao.update(estimate)
     }
 
-    fun getEstimateById(estimateId: Int): Estimate {
+    fun getEstimateById(estimateId: Int): Flow<Estimate> {
         return estimateDao.getEstimateById(estimateId)
+    }
+
+    suspend fun linkPerson(estimateId: Int, person: Person) {
+        estimateDao.linkPerson(estimateId, person)
     }
 }

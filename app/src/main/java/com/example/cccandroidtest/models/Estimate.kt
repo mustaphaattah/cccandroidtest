@@ -15,5 +15,5 @@ data class Estimate(
     val created_date: String,
     @Embedded var created_by: Person?,
     @Embedded var requested_by: Person?,
-    @Embedded var contract: Person?
+    @Embedded var contact: Person?
 )
